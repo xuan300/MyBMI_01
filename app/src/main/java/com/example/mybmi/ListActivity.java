@@ -38,14 +38,14 @@ public class ListActivity extends AppCompatActivity {
 
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spfruit =  findViewById(R.id.spFruit);
         TextView tvshow1 = findViewById(R.id.tvshow1);
-        ListView lvfruit = findViewById(R.id.lvFruit);
+        ListView lvfruit = findViewById(R.id.lvFruit3);
         lvfruit.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        spfruit.setAdapter(adapter);
+        //spfruit.setAdapter(adapter);
         lvfruit.setAdapter(adapter);
 
 
@@ -67,10 +67,11 @@ public class ListActivity extends AppCompatActivity {
                 String s = "";
                 for (int i = 0; i< list.size(); i++){
                     if (lvfruit.isItemChecked(i)){
+                        tvshow1.append(list.get(i));
                         s += list.get(i) + " ";
                     }
                 }
-                tvshow1.setText(String.valueOf(position));
+                tvshow1.setText(s);
             }
         });
 
